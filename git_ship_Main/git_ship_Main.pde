@@ -13,7 +13,7 @@ boolean sensors = true; //turns on sensors
 boolean parkingBrake = false;
 boolean shields = false; //turns on shields
 
-boolean redAlert = true; //turns on red alert
+boolean redAlert = false; //turns on red alert
 
 // End of variables to mess with in Basic Training
 
