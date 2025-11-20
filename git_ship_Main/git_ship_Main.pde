@@ -41,7 +41,7 @@ boolean atWarp;
 boolean showDialogue;
 
 Star[] stars = new Star[400];
-Planet earth;
+Planet[] planets;
 Person person;
 Checksum healthbar;
 Junk junk;
@@ -70,8 +70,10 @@ void draw(){
      stars[i].display();
     }
     //location
-     earth.update();
-     earth.display();
+    for(Planet planet : planets){
+      planet.update();
+      planet.display();
+    }
   
     //viewscreen
     if(showDialogue){
@@ -113,7 +115,14 @@ void init(){
     println(item);
   }
   //location
-  earth = new Planet(2*width/3, height/4, 50);
+  //150 to 450, 100 to 200, 50 to 375, 0 to 50
+  planets = new Planet[3];
+  planets[2] = new Planet(3*width/3, height/3.5, 50, 1, 5, 48);
+  planets[1] = new Planet(2*width/2.5, 0.1 * height, 8, 23, 45, 18);
+  planets[0] = new Planet(0.3*width, height/2, 267, 17, 9, 34);
+  char[] p = binary(healthbar.checksum).toCharArray();
+  p[p.length - 5] = '1';
+  healthbar.checksum = unbinary(new String(p));
   //dialogue
   person = new Person();
   //junk
